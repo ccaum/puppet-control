@@ -5,4 +5,4 @@ mod 'puppetlabs/firewall'
 mod 'puppetlabs/apache'
 
 mod 'baseline_compliance',
-  :git => 'https://github.com/ccaum/baseline_compliance'
+  :git => 'https://github.com/ccaum/puppet-baseline_compliance'
