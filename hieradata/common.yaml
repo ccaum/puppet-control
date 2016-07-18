@@ -1,0 +1,70 @@
+##########################################################################
+# This is the default data for NIST 800-53 and DISA Security             #
+# Technical Implementation Guides for Red Hat Enterprise Linux           #
+#                                                                        #
+# Note: Default SCAP scans will report some false positives.             #
+# See the SIMP documentation for more information                        #
+# https://simp.readthedocs.org                                           #
+#                                                                        #
+# For more information on how to use Hiera, see:                         #
+# * http://docs.puppetlabs.com/hiera/1/puppet.html                       #
+# * http://docs.puppetlabs.com/hiera/1/complete_example.html             #
+#                                                                        #
+##########################################################################
+
+# == Globals == #
+
+# The client networks for your systems. If you need this to be more # (or less) restrictive for a given class, you can override it
+# elsewhere in Hiera.
+client_nets :
+  - '1.2.3.4/24' 
+  - '5.6.7.8/16'
+
+# The DNS domain search string.
+# Remember to put these in the appropriate order for your environment! 
+dns::search:
+  - 'your.domain'
+
+# The DNS servers for dns::servers :
+  - '1.2.3.4'
+
+# === PKI Options === 
+# Where to source the 
+# agent certs since 
+#
+# If you have your own way for distributing keys to systems, you can set the
+# path on the local system here and Puppet will ensure they are configured 
+# for all the various services that require the PKI infrastructure.
+#
+# Please note that any key content changes enforced by Puppet will appear in
+# the Puppet reports, so ensure access to PuppetDB is tightly controlled. 
+pki::public_key_source: "/etc/puppetlabs/puppet/ssl/public_keys/%{::fqdn}.pem"
+pki::private_key_source: "/etc/puppetlabs/puppet/ssl/private_keys/%{::fqdn}.pem"
+
+use_sssd: false
+sssd::domains :
+ - "LOCAL"
+
+
+compliance::profile::purge_unmanaged_resource_types:    
+  - 'firewall'
+
+
+use_ldap : false
+ldap::base_dn: 'dc=your,dc=domain'
+ldap::bind_dn: "cn=hostAuth,ou=Hosts,%{hiera(‘ldap::base_dn’)}"
+ldap::bind_pw: 'your bind password'
+ldap::bind_hash: 'Generate this with slappasswd!'
+ldap::sync_dn: "cn=LDAPSync,ou=Hosts,%{hiera(‘ldap::base_dn’)}"
+ldap::sync_pw: 'your sync password'
+ldap::sync_hash: 'Generate this with slappasswd!'
+ldap::root_dn: "cn=LDAPAdmin,ou=People,%{hiera(‘ldap::base_dn’)}"
+ldap::root_hash: 'Generate this with slappasswd!'
+ldap::uri:
+  - "" 
+ldap::master: ""
+
+selinux::ensure : 'enforcing'
+use_auditd : true
+use_iptables : false
+simplib::runlevel : '3'
