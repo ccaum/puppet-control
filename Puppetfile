@@ -150,3 +150,5 @@ mod 'tpm',
 :git => 'https://github.com/simp/pupmod-simp-tpm'
 mod 'simpcat',
 :git => 'https://github.com/simp/pupmod-simp-concat'
+mod 'compliance_markup',
+  :git => 'https://github.com/simp/pupmod-simp-compliance_markup'
