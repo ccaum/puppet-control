@@ -2,6 +2,7 @@ forge "https://forgeapi.puppetlabs.com"
 
 mod 'puppetlabs/stdlib'
 mod 'puppetlabs/firewall'
+mod 'puppetlabs/concat'
 mod 'puppetlabs/apache'
 
 mod 'baseline_compliance',
