@@ -1,3 +1,3 @@
 node default {
-  include profile::compliance
+  class { 'profile::compliance': }
 }
