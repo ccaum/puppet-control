@@ -21,11 +21,11 @@ class profile::compliance (
     before => [ Class['clamav','sudosh'] ],
   }
 
-  include 'aide'
-  include 'auditd'
+  class { 'aide': }
+  class { 'auditd': }
 
   # Virus scanning. 
-  include 'clamav'
+  class { 'clamav': }
 
   #Class[‘simplib’] expects this group to exist 
   group { 'puppet':
