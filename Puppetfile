@@ -24,21 +24,8 @@ mod 'herculesteam/augeasproviders_puppet'
 mod 'herculesteam/augeasproviders_shellvar'
 mod 'herculesteam/augeasproviders_ssh'
 mod 'herculesteam/augeasproviders_sysctl'
-
-# Augeas lense providers
-mod 'herculesteam/augeasproviders'
-mod 'herculesteam-augeasproviders_core'
-mod 'herculesteam/augeasproviders_apache'
-mod 'herculesteam/augeasproviders_base'
-mod 'herculesteam/augeasproviders_core'
-mod 'herculesteam/augeasproviders_mounttab'
-mod 'herculesteam/augeasproviders_nagios'
-mod 'herculesteam/augeasproviders_pam'
-mod 'herculesteam/augeasproviders_postgresql'
-mod 'herculesteam/augeasproviders_puppet'
-mod 'herculesteam/augeasproviders_shellvar'
-mod 'herculesteam/augeasproviders_ssh'
-mod 'herculesteam/augeasproviders_sysctl'
+mod 'herculesteam/augeasproviders_grub'
+mod 'herculesteam/augeasproviders_syslog'
 
 # Hardening modules
 
@@ -46,3 +33,7 @@ mod 'hardening/hardening_stdlib'
 mod 'hardening/os_hardening'
 mod 'hardening/ssh_hardening'
 mod 'hardening/mysql_hardening'
+
+# Hardening dependencies
+mod 'saz/ssh'
+mod 'thias/sysctl'
