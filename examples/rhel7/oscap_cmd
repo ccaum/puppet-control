@@ -1,0 +1,2 @@
+yum install scap-security-guide
+oscap oval eval --results /vagrant/rhsa-oval.xml --report /vagrant/oval-report.html /usr/share/xml/scap/ssg/content/ssg-rhel7-oval.xml
